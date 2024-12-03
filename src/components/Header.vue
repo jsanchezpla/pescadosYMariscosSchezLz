@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="links">
-            <p><router-link to="/inicio">Inicio</router-link></p>
+            <p><router-link to="/">Inicio</router-link></p>
             <p><router-link to="/about">Sobre nosotros</router-link></p>
             <p><router-link to="/contact">Contacto</router-link></p>
         </div>

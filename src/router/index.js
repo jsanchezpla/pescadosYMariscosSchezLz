@@ -17,20 +17,20 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     }, */
     {
+      path: '/',
+      name: 'inicio',
+      component: () => import('@/modules/inicio/components/Inicio.vue'),
+    }, 
+    {
       path: '/about',
       name: 'about',
-      component: () => import('../modules/about/components/About.vue'),
+      component: () => import('@/modules/about/components/About.vue'),
     }, 
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('../modules/contact/components/Contact.vue'),
-    }, 
-    {
-      path: '/inicio',
-      name: 'inicio',
-      component: () => import('../modules/inicio/components/Inicio.vue'),
-    }, 
+      component: () => import('@/modules/contact/components/Contact.vue'),
+    }
   ],
 })
 
