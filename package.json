@@ -10,6 +10,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "boxicons": "^2.1.4",
     "pinia": "^2.2.6",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"

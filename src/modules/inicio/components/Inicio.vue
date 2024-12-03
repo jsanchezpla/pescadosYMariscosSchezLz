@@ -6,34 +6,111 @@
                 <img src="@\assets\img\1.jpg">
             </section>
             <section class="slider-section">
+                <img src="@\assets\img\2.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\3.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\4.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\5.jpg">
+            </section>
+            <section class="slider-section">
                 <img src="@\assets\img\6.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\7.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\8.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\9.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\10.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\11.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\12.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\13.jpg">
             </section>
             <section class="slider-section">
                 <img src="@\assets\img\14.jpg">
             </section>
+            <section class="slider-section">
+                <img src="@\assets\img\15.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\16.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\17.jpg">
+            </section>
+            <section class="slider-section">
+                <img src="@\assets\img\18.jpg">
+            </section>
         </div>
-        <div class="btn-left"><</div>
-        <div class="btn-right">></div>
+        <div class="btn-left"><box-icon color="white" name='chevron-left' ></box-icon></div>
+        <div class="btn-right"><box-icon color="white" name='chevron-right' ></box-icon></div>
     </div>
     <router-link to="/contact"><button>Reserva tu pedido</button></router-link>
 </template>
 
 <script setup>
+import 'boxicons'
 import { onMounted } from 'vue';
-console.log("inicio")
+
 onMounted(() => {
   const btnLeft = document.querySelector(".btn-left");
   const btnRight = document.querySelector(".btn-right");
   const slider = document.querySelector("#slider");
   const sliderSection = document.querySelectorAll(".slider-section");
 
-  const moveToLeft = () => {
-    console.log("Moviendo a la izquierda");
-  };
+  setInterval(() => {
+    moveToRight();
+  }, 5000);
+    
+  let operacion = 0;
+  let counter=0;
+  let widthImg = 100/sliderSection.length;
 
   const moveToRight = () => {
-    console.log("Moviendo a la derecha");
+    if (counter>=sliderSection.length-1) {
+        operacion=0;
+        slider.style.transform = `translate(-${operacion}%)`
+        slider.style.transition="none"
+        counter=0;
+    }else{
+        counter++;
+        operacion= operacion + widthImg
+        slider.style.transform = `translate(-${operacion}%)`
+        slider.style.transition="all ease 0.6s"
+    }
   };
+
+  const moveToLeft = () => {
+    counter--;
+    if (counter<0) {
+        counter=sliderSection.length-1;
+        operacion= widthImg*(sliderSection.length-1);
+        slider.style.transform = `translate(-${operacion}%)`
+        slider.style.transition="none"
+    }else{
+        operacion= operacion - widthImg
+        slider.style.transform = `translate(-${operacion}%)`
+        slider.style.transition="all ease 0.6s"
+    }
+    
+  };
+
+  
 
   if (btnLeft) btnLeft.addEventListener("click", moveToLeft);
   if (btnRight) btnRight.addEventListener("click", moveToRight);
@@ -90,17 +167,17 @@ button:hover {
     background-color:#e0e0e0;
     box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.66); 
     border-radius: 15px;
-    overflow: hidden;
+    overflow: hidden ;
 }
 
 .carruseles{
-    width: 300%;   
+    width: 1800%;   
     height: 100%; 
     display: flex;
 }
 
 .slider-section{
-    width: calc(100% / 3);  
+    width: calc(100% / 18);  
     height: 100%;  
 }
 
@@ -125,6 +202,10 @@ button:hover {
     transform: translate(0, -50%);
     transition: .5s ease;
     user-select: none;
+}
+
+box-icon {
+  color: white;
 }
 
 .btn-left:hover, .btn-right:hover{
